@@ -1,0 +1,35 @@
+
+html, body { background-color: #fff; padding: 20 20;}
+h1 {
+  margin-top: 0;
+  font-size: 1.5em;
+}
+.story { 
+  padding: 10 10;
+  width: 12cm; 
+  font-family: Arial;
+  margin-bottom: 20;
+}
+.story:nth-child(2n) {
+  background-color: #f2f2f2;
+}
+
+p { line-height: 1.4em }
+
+.ut { color: #999; font-size: 1em; text-decoration: line-through; }
+.meta { color: #999; }
+
+@media print {
+  html, body { margin: 0 0; padding: 0 0;}
+  .story {
+    padding: 0cm 0cm;    
+    float: left;
+    height: 8cm;   
+    margin-bottom: 2cm;     
+  }
+  .story:nth-child(2n) {
+    margin-left: 1.2cm;
+    float: right;
+    background-color: #fff;
+  }
+}

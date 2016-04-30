@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+  html {
+    background-color: #adadad;
+  }
+  * {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+  }
+
+  body {
+    padding: 0.2cm 1cm;
+    width: 15cm;
+    height: 10cm;
+  }
+  </style>
+</head>
+<body>
+{{.Content}}
+</body>
+</html>

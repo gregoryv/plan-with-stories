@@ -1,0 +1,10 @@
+#!/bin/sh
+# Creates a ready to print html page of stories that need grooming
+#
+# Usage: groom *.story
+#
+export OUTPUT=grooming.html 
+out=`print-story $(filter-story "not-estimated" $@)`
+if [ ! -z "$BROWSER" ]; then
+  $BROWSER $out
+fi
