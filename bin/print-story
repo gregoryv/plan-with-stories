@@ -1,1 +1,7 @@
-../src/print-story.pl
+#!/bin/sh
+path=$(dirname "$0")
+export OUTPUT=toprint.html 
+$path/../src/print-story.pl $@
+if [ ! -z "$BROWSER" ]; then
+  $BROWSER $OUTPUT
+fi

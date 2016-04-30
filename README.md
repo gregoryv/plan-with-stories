@@ -10,26 +10,60 @@ Work with stories using command line tools and simple visualization.
 
 ## Usage
 
-### Create a directory within your project PROJECT
+Environment variables used by the script in a general way
 
-    mkdir $PROJECT/plan
-    cd $PROJECT/plan
+- EDITOR to edit new stories
+- OUTPUT name of output file for e.g. groom and print-story
+- BROWSER browser to use when generating printable files
+
+### new-story 
+
+Creates a new story based on the title. If EDITOR is set in your environment
+it will be used to open the story for further editing. The story file is
+created in the current folder.
+
+Example
+
+    new-story Authentication using password 
 
 
-### Create your first story, will be opened with EDITOR if set
+### print-story
 
-    export EDITOR="emacs -nw"
-    new-story Nice story title here
+Creates a html file with the given stories ready to be printed.
+If BROWSER is set in your environment it will open the file directly.
 
-Keep adding stories this way and make sure to keep them under version
-control.
+Example to render all your stories in current folder
+
+    print-story *.story
 
 
-#### When it's time to start grooming the stories with your team, print them out
+### groom
 
-    cd $PROJECT/plan
-    export BROWSER=firefox
+Similar to print-story with the difference that each of the given files
+are parsed and included only if meta tag Points has not been set.
+
+Example
+
     groom *.story
+
+
+### refile-story
+
+A story file is named by concatenating the mnemonic and the title with some
+cleanup. If the title or mnemonic is changed, this script will rename the story file accordingly.
+
+Example to check all stories and rename them if necessary
+
+    refile-story *.story
+
+
+### filter-story
+
+Story content specific filtering when grep is not enough.
+
+Example to list story files which are not-estimated (used in groom script)
+
+    filter-story "not-estimated" *.story
 
 
 ## Story file format
@@ -51,14 +85,14 @@ control.
 
 Defined meta tags are
 
-#### Points
+#### # Points:
 
 By default all stories are unestimated and have a list of numbers.
 When estimated only a single number should be stated e.g.
 
     # Points: 3
 
-#### Tags
+#### # Tags:
 
 The tags line is a way to have one word indicators for any given story. The
 first tag is always the mnemonic and should be uniq among your currently
