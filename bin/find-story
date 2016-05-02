@@ -1,0 +1,6 @@
+#!/bin/sh
+search="*"
+if [ $# -eq 1 ]; then
+  search=$1
+fi
+find . -name "$search.story" | tr '\n' ' '
