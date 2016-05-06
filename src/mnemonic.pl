@@ -1,12 +1,32 @@
 #!/usr/bin/perl
 
 @vowels = split('', 'aeiouy');
-@consonants1 = split('', 'bcdfghjklmnpqrstvz');
-@consonants2 = split('', 'bcdfghjlmnpqrstvxz');
-$id = @consonants1[int rand @consonants1];
-$id .= @vowels[int rand @vowels];
-$id .= @consonants2[int rand @consonants2];
-$id .= int rand 10;
-$id .= int rand 10;
+# Never use 'x' as the first lettr for easier pronounciation
+@firstConsonants = split('', 'bcdfghjklmnpqrstvz');
+@secondConsonants = split('', 'bcdfghjklmnpqrstvxz');
 
-print $id;
+sub word {
+  $_ = '';
+  $startWithVowel = int rand 2;
+  if($startWithVowel){
+    $_ .= @vowels[int rand @vowels];
+    $_ .= @secondConsonants[int rand @secondConsonants];
+    $_ .= @vowels[int rand @vowels];
+  } else {
+    $_ .= @firstConsonants[int rand @firstConsonants];
+    $_ .= @vowels[int rand @vowels];
+    $_ .= @secondConsonants[int rand @secondConsonants];
+  }
+  # Filter offensive words
+  if (/sex|kuk|fis|fuc|fuk/) {
+    return mem();
+  }
+  return $_;
+}
+
+# Add two digits
+$mem = word();
+$mem .= int rand 10;
+$mem .= int rand 10;
+
+print $mem;
