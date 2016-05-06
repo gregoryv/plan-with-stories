@@ -3,6 +3,10 @@
 #
 # Usage: groom *.story
 #
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 STORY [... STORYn]"
+    exit 1
+fi
 export OUTPUT=grooming.html 
 out=`print-story $(filter-story "not-estimated" $@)`
 if [ ! -z "$BROWSER" ]; then
