@@ -36,6 +36,7 @@ foreach my $file (@ARGV) {
 $csspath = dirname(abs_path($0)) . '/../share/story-print.css';
 $_ = <<EOF;
 <html><link rel="stylesheet" type="text/css" href="$csspath"/>
+<meta charset="utf-8">
 <body>
 $cards
 </body></html>
