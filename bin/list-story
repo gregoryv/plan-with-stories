@@ -1,1 +1,11 @@
-../src/list-story.pl
+#!/bin/sh
+# Creates a ready to print html page of stories that need grooming
+#
+# Usage: groom *.story
+#
+stories=$@
+if [ $# -eq 0 ]; then
+    stories=$(find-story)
+fi
+path=$(dirname "$0")
+$path/../src/list-story.pl $stories

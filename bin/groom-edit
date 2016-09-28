@@ -9,10 +9,7 @@ if [ $# -eq 0 ]; then
   stories="$(find-story)"
 fi
 if [ -z "$stories" ]; then
+  echo "No stories found!"
   exit 0
 fi
-export OUTPUT=grooming.html 
-out=`print-story $(filter-story "not-estimated" $stories)`
-if [ ! -z "$BROWSER" ]; then
-  $BROWSER $out
-fi
+$EDITOR $(filter-story "not-estimated" $stories)
