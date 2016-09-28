@@ -21,7 +21,7 @@ foreach my $file (@ARGV) {
 
   # Move file if different
   if($file ne $out) {
-    rename $file, $out;
-    printf "Moved %s to %s\n", $file, $out;
+    #rename $file, $out;
+    printf "git mv %s %s\n", $file, $out;
   }
 }

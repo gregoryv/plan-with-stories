@@ -4,9 +4,9 @@ h1 {
   margin-top: 0;
   font-size: 1.5em;
 }
-.story { 
+.story {
   padding: 10 10;
-  width: 12cm; 
+  width: 12cm;
   font-family: Arial;
   margin-bottom: 20;
 }
@@ -16,16 +16,28 @@ h1 {
 
 p { line-height: 1.4em }
 
-.ut { color: #999; font-size: 1em; text-decoration: line-through; }
-.meta { color: #999; }
-
+.ut a { font-size: 0.8em; text-decoration: line-through; }
+.meta, .ut { color: #999; }
+ul.scope li {
+  list-style-type: none;
+}
+ul.scope li.in:before {
+  content: "\2610";
+  margin-right: 7px;
+  margin-left: -17px;
+}
+ul.scope li.ut:before {
+  content: "\25A7";
+  margin-right: 7px;
+  margin-left: -18px;
+}
 @media print {
   html, body { margin: 0 0; padding: 0 0;}
   .story {
-    padding: 0cm 0cm;    
+    padding: 0cm 0cm;
     float: left;
-    height: 8cm;   
-    margin-bottom: 2cm;     
+    height: 8cm;
+    margin-bottom: 2cm;
   }
   .story:nth-child(2n) {
     margin-left: 1.2cm;

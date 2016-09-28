@@ -11,7 +11,7 @@ sub story {
 
   $description =~ s/\.\n/.<br>/g;
   $scope =~ s|^\+ (.*)$|<li class="in scope">\1</li>|gm;
-  $scope =~ s|^\- (.*)$|<li class="ut scope">\1</li>|gm;
+  $scope =~ s|^\- (.*)$|<li class="ut scope"><a>\1</a></li>|gm;
   $_ = <<EOFStory;
 <div class="story">
   <h1>$title</h1>
