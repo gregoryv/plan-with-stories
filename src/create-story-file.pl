@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-use File::Slurp;
 use Cwd 'abs_path';
 use File::Basename;
 
@@ -10,7 +9,7 @@ $here = dirname(abs_path($0));
 $tag1 = `$here/mnemonic.pl`;
 $template =  $here . '/../share/story.template';
 # Content from template
-$_ = read_file($template);
+$_ =  do { local( @ARGV, $/ ) = $template ; <> } ;
 s/TITLE/$title/g;
 s/TAG1/$tag1/;
 $content = $_;
@@ -21,5 +20,7 @@ s/ /_/g;
 s/\W//g;
 $out = sprintf("%s_%s.story", $tag1, lc($_));
 
-write_file($out, $content);
+open( my $fh, ">$out" ) ||  die "can't create $out $!" ;
+print $fh $content ;
+
 printf "%s\n", $out;

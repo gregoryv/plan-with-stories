@@ -7,8 +7,6 @@ Work with stories using command line tools and simple visualization.
     git clone https://github.com/gregoryv/plan-with-stories.git
     export PATH=$HOME/plan-with-stories/bin:$PATH
 
-Also make sure you have [File::Slurp](http://search.cpan.org/~uri/File-Slurp-9999.19/lib/File/Slurp.pm) installed
-
 ## Usage
 
 Environment variables used by the script in a general way

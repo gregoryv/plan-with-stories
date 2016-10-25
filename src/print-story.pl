@@ -1,11 +1,16 @@
 #!/usr/bin/perl
-use File::Slurp;
 use Cwd 'abs_path';
 use File::Basename;
 
+sub write_file {
+    my( $file_name ) = shift ;
+    open( my $fh, ">$file_name" ) ||  die "can't create $file_name $!" ;
+    print $fh @_ ;
+}
+
 sub story {
   $file = shift;
-  $_ = read_file($file);
+  $_ = do { local( @ARGV, $/ ) = $file ; <> } ;
   chomp;
   ($title, $description, $scope, $meta) = split("\n\n", $_);
 

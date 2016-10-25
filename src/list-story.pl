@@ -1,12 +1,10 @@
 #!/usr/bin/perl
-use File::Slurp;
-
 $template = "%-40s %6s  %s\n";
 printf $template, "# Title", "Points", "Tags";
 
 foreach my $file (@ARGV) {
   die "No such file: $file" if ! -e $file;
-  $_ = read_file($file);
+  $_ = do { local(@ARGV, $/) = $file; <> };
   ($title, $description, $scope, $meta) = split("\n\n", $_);
 
   if(length($title) >= 40) {

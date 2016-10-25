@@ -1,12 +1,11 @@
 #!/usr/bin/perl
-use File::Slurp;
 use Cwd 'abs_path';
 use File::Basename;
 
 foreach my $file (@ARGV) {
   $file = dirname(abs_path($file)) . "/". basename($file);
   die "No such file: $file" if ! -e $file;
-  $_ = read_file($file);
+  $_ = do { local(@ARGV, $/) = $file; <> };
   ($title, $description, $scope, $meta) = split("\n\n", $_);
 
   # First tag is the identifier
