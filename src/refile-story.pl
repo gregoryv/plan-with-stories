@@ -5,11 +5,13 @@ use File::Basename;
 foreach my $file (@ARGV) {
   $file = dirname(abs_path($file)) . "/". basename($file);
   die "No such file: $file" if ! -e $file;
+  # First line is title
   $_ = do { local(@ARGV, $/) = $file; <> };
-  ($title, $description, $scope, $meta) = split("\n\n", $_);
+  $_ =~ /^(.*)\n/;
+  $title = $1;
 
   # First tag is the identifier
-  $meta =~ /# Tags:\s*(\w+)\s/;
+  $_ =~ /# Tags:\s*(\w+)\s?/;
   $tag1 = $1;
 
   # Output file from title
